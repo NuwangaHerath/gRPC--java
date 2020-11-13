@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_package = "com.devicedemo.grpc";
+
+service device{
+  rpc getlistservice(ListRequest) returns (stream Response){};
+  rpc getservice(Request) returns (Response){};
+  rpc getsummary(stream Request) returns (StreamResponse){};
+  rpc getgoals(stream  Request) returns (stream Response){};
+}
+
+message ListRequest{
+  string service = 1;
+}
+message Response{
+  string  responsemessage = 1;
+}
+message Request{
+  string service = 1;
+}
+message StreamResponse{
+  string response= 1;
+  int32  count= 2;
+}
